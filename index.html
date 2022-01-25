@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <script defer src="https://unpkg.com/alpinejs@3.8.1/dist/cdn.min.js"></script>
+    <title>S.und Co</title>
+
+    <!-- 
+
+        design can be found at:  https://xd.adobe.com/view/1b0dc640-6cb6-4b78-4968-d4cedbeac66b-6d3c/
+                           and   https://xd.adobe.com/view/49a28bfd-8494-4a09-71ef-b66c39a35625-3f93/
+
+            for mobile and desktop views.
+
+     -->
+</head>
+<body>
+    <div class="home">
+        <nav id="nav" class="nav">
+            <div class="scrollable">
+                <div class="menu-bar">
+                    <span></span>
+                    <div>MENU</div>
+                    <div onclick="ToggleMenu()">
+                        <img src="images/close.svg"/>
+                    </div>
+                </div>
+                <div class="invisible"></div>
+                <div class="main-menu">
+                    <a href="#" class="active-page">Main Page</a>
+                    <a href="#">Page Two</a>
+                    <a href="#">Page Three</a>
+                    <a href="#">About Us</a>
+                    <a href="#">Our Work</a>
+                    <a href="#">Contact</a>
+                </div>
+                <div class="lang">
+                    <span id="en" class="active-lang">EN</span>
+                    <span>|</span> 
+                    <span id="gr">GR</span>
+                </div>
+                <div class="footer-mobile">
+                    <div class="social">
+                        <a href="#">
+                            <img src="images/facebook.svg"/>
+                        </a>
+                        <a href="#">
+                            <img src="images/twitter.svg"/>
+                        </a>
+                        <a href="#">
+                            <img src="images/instagram.svg"/>
+                        </a>
+                        <a href="#">
+                            <img src="images/website.svg"/>
+                        </a>
+
+                    </div>
+                    <div class="cookies">
+                        Cookies. | Privacy.
+                    </div>
+                    <hr>
+                    <div class="info">
+                        <div>S.und@themail.com</div>
+                        <div>+30 210 1234 567</div>
+                    </div>
+                    <div class="copyright">
+                        © The standard Copywrite 2020
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="header">
+            <a herf="/">
+                <img id="logo" src="images/logo.svg"/>
+            </a>
+            <div onclick="ToggleMenu()">
+                <img id="burger" src="images/burger.svg"/>
+            </div>
+        </div>
+
+
+
+        <!-- slider -->
+        <div class="slider">
+  
+            <div 
+              class="slider-c1"
+              x-data="{ activeSlide: 1, slides: [1, 2, 3] }"
+             >
+              <!-- Slides -->
+              <template x-for="slide in slides" :key="slide">
+                <div
+                   x-show="activeSlide === slide"
+                   class="slides">
+                    <div class="container">
+                        <h1>S.und Co</h1>
+                        <div class="bar"></div>
+                        <p id="home_p" :class="activeSlide === 2 ? 'hidden' : ''">
+                            To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it?
+                        </p>
+                        <div :class="activeSlide === 2 ? 'c-for-change' : 'hidden' ">
+                            <h3>They see me changin... they hatin'</h2>
+                        </div>
+                    </div>
+                    <div class="page-indicator">
+                        <span x-text="slide"></span>
+                        <span >/</span>
+                        <span x-text="slides.length"></span>
+                    </div>
+                </div>
+              </template>
+              
+              <div class="arrows">
+                <div class="arrow">
+                  <button
+                    x-on:click="activeSlide = activeSlide === 1 ? slides.length : activeSlide - 1">
+                    &#8592;
+                   </button>
+                </div>
+                <div class="arrow next">
+                  <button 
+                    x-on:click="activeSlide = activeSlide === slides.length ? 1 : activeSlide + 1">
+                    &#8594;
+                  </button>
+                </div>        
+              </div>
+          
+              <!-- Buttons -->
+              <div class="dots">
+                <template x-for="slide in slides" :key="slide">
+                  <button
+                    class="dot"
+                    :class="{ 
+                        'active-dot': activeSlide === slide,
+                        '': activeSlide !== slide 
+                    }" 
+                    x-on:click="activeSlide = slide"
+                  ></button>
+                </template>
+              </div>
+            </div>
+            
+            </div>
+        </div>
+
+
+        <!-- <div class="container">
+            <h1>S.und Co</h1>
+            <div class="bar"></div>
+            <p id="home_p">
+                To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it?
+            </p>
+            <div class="dots">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div> -->
+    </div>
+    <div class="container">
+        <div class="Standard">
+            <div class="center">
+                <img id="photographer" src="images/photographer.png"/>
+            </div>
+            <div>
+                <div class="since">Since the 1500s</div>
+                <h2>The standard</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.
+                </p>
+            </div>
+            <div class="center col2 row2">
+                <img id="pillow" src="images/pillow.png"/>
+            </div>
+            <div class="col1 row2 align-right">
+                <div class="since">Since the 1500s</div>
+                <h2>The standard</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <button class="btn">Search</button>
+            </div>
+        </div>
+    </div>
+    <div class="xl-flex">
+        <div class="form-page ">
+            <div class="mobile-container">
+                <h2>The standard</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <form method="post" name="Form" onsubmit="return validate()" action="/">
+                    <div>
+                        <div id="nameCheck" class="abs-check"></div>
+                        <input class="name-val" name="Name-input" id="Name-input" placeholder="Full Name*" onchange="stayFocused()"/>
+                        <div id="nameLabel" class="abs-label name-val">Full Name *</div>
+                        <div class="help-text name-val">
+                            <span id="Name-text">This field is required</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="abs-check" id="emailCheck"></div>
+                        <input class="email-val" name="Email-input" id="Email-input" placeholder="E-mail*" onchange="stayFocused()"/>
+                        <div id="emailLabel" class="abs-label email-val">E-mail *</div>
+                        <div class="help-text email-val">
+                            <span id="Email-text">This field is required</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="abs-check" id="phoneCheck"></div>
+                        <input class="phone-val" name="Phone-input" id="Phone-input" placeholder="Phone*" onchange="stayFocused()"/>
+                        <div id="phoneLabel" class="abs-label phone-val">Phone *</div>
+                        <div class="phone-val help-text">
+                            <span id="Phone-text">This field is required</span>
+                        </div>
+                    </div>
+                    <div class="category-flex">
+                        <div class="mr-20">
+                            <select id="category" onchange="populateSubcatgory()">
+                                <option value="">-- Select --</option>
+                            </select>
+                            <div class="abs-label">Category</div>
+                            <div class="help-text">
+                                <span>help Text</span>
+                            </div>
+                        </div>
+                        <div class="ml-20">
+                            <select id="subcategory">
+                                <option value="">-- Select --</option>
+                            </select>
+                            <div class="abs-label">Subategory</div>
+                            <div class="help-text">
+                                <span>help Text</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <textarea placeholder="Message" id="Textarea-form" name="Text" maxlength="100" onchange="stayFocused();wordUpdate()" ></textarea>
+                    <div id="textareaLabel">Message</div>
+                    <div class="word-count">
+                        <span id="wordCount">100</span>
+                    </div>
+                    <div class="text">Please select at least one of the following:</div>
+                    <div class="checkboxes">
+                        <label id="option1" class="checkbox text">Option 1
+                            <input type="checkbox">
+                            <span class="checked"></span>
+                        </label>
+                        <label class="checkbox text">Option 2
+                            <input type="checkbox" checked>
+                            <span class="checked"></span>
+                        </label>
+                    </div>
+                    <button class="btn submit" type="submit" value="Submit">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="map-bg">
+            <div class="map">
+                <span class="pin"></span>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-bar-bg">
+        <div class="bottom-bar">
+            <span>© The standard Copywrite 2020</span>
+            <img class="small-logo" src="images/logo.svg"/>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    function ToggleMenu() {
+        if(document.getElementById("nav").style.display == 'block'){
+            document.getElementById("nav").style.display = 'none';
+        }else{
+            document.getElementById("nav").style.display = 'block';
+        }
+    }
+    function validate() {
+
+        var name = document.forms["Form"]["Name-input"].value;
+        var nameEl = document.getElementsByClassName('name-val');
+
+        if (name == "" || name == null || !(allLetter(name))) {
+            document.getElementById("Name-input").style.borderColor = '#FF1A00';
+            document.getElementById("Name-text").innerHTML = "Error Message";
+            document.getElementById("nameCheck").style.display = 'none';
+            for (let i = 0; i < nameEl.length; i++) {
+                nameEl[i].style.color = '#FF1A00';
+            }
+        }else {
+            document.getElementById("Name-input").style.borderColor = '#000000';
+            document.getElementById("Name-text").innerHTML = "Help Text";
+            document.getElementById("nameCheck").style.display = 'block';
+            for (let i = 0; i < nameEl.length; i++) {
+                nameEl[i].style.color = '#000000';
+            }
+        } 
+
+        var phone = document.forms["Form"]["Phone-input"].value;
+        var phoneEl = document.getElementsByClassName('phone-val');
+
+        if (phone == "" || phone == null || !(allNumbers(phone))) {
+            document.getElementById("Phone-input").style.borderColor = '#FF1A00';
+            document.getElementById("Phone-text").innerHTML = "Error Message";
+            document.getElementById("phoneCheck").style.display = 'none';
+            for (let i = 0; i < phoneEl.length; i++) {
+                phoneEl[i].style.color = '#FF1A00';
+            }
+        }else {
+            document.getElementById("Phone-input").style.borderColor = '#000000';
+            document.getElementById("Phone-text").innerHTML = "Help Text";
+            document.getElementById("phoneCheck").style.display = 'block';
+            for (let i = 0; i < phoneEl.length; i++) {
+                phoneEl[i].style.color = '#000000';
+            }
+        }
+
+        var email = document.forms["Form"]["Email-input"].value;
+        var emailEl = document.getElementsByClassName('email-val');
+
+        if (email == "" || email == null || !(validateEmail(email))) {
+            document.getElementById("Email-input").style.borderColor = '#FF1A00';
+            document.getElementById("Email-text").innerHTML = "Error Message";
+            document.getElementById("emailCheck").style.display = 'none';
+            for (let i = 0; i < emailEl.length; i++) {
+                emailEl[i].style.color = '#FF1A00';
+            }
+        }else {
+            document.getElementById("Email-input").style.borderColor = '#000000';
+            document.getElementById("Email-text").innerHTML = "Help Text";
+            document.getElementById("emailCheck").style.display = 'block';
+            for (let i = 0; i < emailEl.length; i++) {
+                emailEl[i].style.color = '#000000';
+            }
+        }
+        return false;
+    }
+
+    function allLetter(input) {
+        const letters = /^[A-Za-z\s]*$/;
+        if(input.match(letters)) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+    function allNumbers(input) {
+        if(input.length == 12) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+    function validateEmail(input) {
+        const email =/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(input.match(email) && (input.endsWith("@spitogatos.gr"))) {
+            return true
+        }
+        else{
+            return false;
+        }
+    }
+
+    function stayFocused(){
+        let name2 = document.forms["Form"]["Name-input"].value;
+        if (!(name2 == "" || name2 == null )) {
+            document.getElementById("nameLabel").style.display = 'block';
+        }else {
+            document.getElementById("nameLabel").style.display = 'none';
+        }
+
+        let email2 = document.forms["Form"]["Email-input"].value;
+        if (!(email2 === "" || email2 === null )) {
+            document.getElementById("emailLabel").style.display = 'block';
+        }else {
+            document.getElementById("emailLabel").style.display = 'none';
+        }
+
+        let phone2 = document.forms["Form"]["Phone-input"].value;
+        if (!(phone2 == "" || phone2 == null )) {
+            document.getElementById("phoneLabel").style.display = 'block';
+        }else {
+            document.getElementById("phoneLabel").style.display = 'none';
+        }
+
+        let text = document.getElementById("Textarea-form").value;
+        if (!(text == "" || text == null )) {
+            document.getElementById("textareaLabel").style.display = 'block';
+        }else {
+            document.getElementById("textareaLabel").style.display = 'none';
+        }
+    }
+
+    function wordUpdate() {
+        let text = document.getElementById("Textarea-form").value.length;
+        document.getElementById("wordCount").innerHTML = String(100 - text);
+    }
+  
+    function phone_formatting(ele,restore) {
+        let new_number,
+            selection_start = ele.selectionStart,
+            selection_end = ele.selectionEnd,
+            number = ele.value.replace(/\D/g,'');
+        
+            if (number.length > 2) {
+                new_number = number.substring(0,3) + '-';
+                if (number.length === 4 || number.length === 5) {
+                    new_number += number.substr(3);
+                }
+                else if (number.length > 5) {
+                    new_number += number.substring(3,6) + '-';
+                }
+                if (number.length > 6) {
+                    new_number += number.substring(6);
+                }
+            }
+            else {
+                new_number = number;
+            }
+    
+            ele.value =  (new_number.length > 12) ? new_number.substring(0,12) : new_number;
+            if (new_number.slice(-1) === '-' && restore === false
+                && (new_number.length === 8 && selection_end === 7)
+                    || (new_number.length === 4 && selection_end === 3)) {
+                selection_start = new_number.length;
+                selection_end = new_number.length;
+            }
+            else if (restore === 'revert') {
+                selection_start--;
+                selection_end--;
+            }
+        ele.setSelectionRange(selection_start, selection_end);
+    }
+    
+    function formatPhone(field,e) {
+        let key_code = e.keyCode,
+            key_string = String.fromCharCode(key_code),
+            press_delete = false,
+            dash_key = 189,
+            delete_key = [8,46],
+            direction_key = [33,34,35,36,37,38,39,40],
+            selection_end = field.selectionEnd;
+        
+        if (delete_key.indexOf(key_code) > -1) {
+            press_delete = true;
+        }
+        
+        if (key_string.match(/^\d+$/) || press_delete) {
+            phone_formatting(field,press_delete);
+        } else if(direction_key.indexOf(key_code) > -1) {
+            // do nothing
+        } else if(dash_key === key_code) {
+            if (selection_end === field.value.length) {
+                field.value = field.value.slice(0,-1)
+            } else {
+                field.value = field.value.substring(0,(selection_end - 1)) + field.value.substr(selection_end)
+                field.selectionEnd = selection_end - 1;
+            }
+        }
+        else {
+            e.preventDefault();
+            phone_formatting(field,'revert');
+        }
+    }
+
+    document.getElementById('Phone-input').onkeyup = function(e) {
+        formatPhone(this,e);
+    }
+
+    window.addEventListener('resize', function(showMenu) {
+        if(window.innerWidth > 767) {
+            document.getElementById("nav").style.display = 'flex';
+        }else {
+            document.getElementById("nav").style.display = 'none';
+        }
+    }, true);
+
+    document.onload(populateCategory());
+
+    var json = "";
+    function populateCategory() {
+        fetch('https://run.mocky.io/v3/0b8fbded-6ce4-4cb2-bf2f-d2c39207506b')
+        .then(res => res.json())
+        .then((categories) => {
+            json = categories;
+            console.log('Output: ', categories);
+            let ele = document.getElementById('category');
+            for (let i = 0; i < categories.length; i++) {
+                ele.innerHTML = ele.innerHTML +
+                    '<option value="' + categories[i]['name'] + '">' +  categories[i]['name'] + '</option>';
+            }
+        }).catch(err => console.error(err));
+    }
+
+    function populateSubcatgory(){   
+        let option = document.getElementById('category').value;
+        let ele = document.getElementById('subcategory');
+        ele.innerHTML='';
+        if(option != ''){
+            for (let i = 0; i<json.length; i++){
+                if(option == json[i]['name']){
+                    let sub = json[i]['subCategories'];
+                    if(sub != null){
+                        for (let i = 0; i < sub.length; i++) {
+                            ele.innerHTML = ele.innerHTML +
+                                '<option value="' + sub[i]['name'] + '">' +  sub[i]['name'] + '</option>';
+                        }
+                    }
+                    console.log(json[i]['subCategories']);
+                    break;
+                }
+            }
+        }
+    }
+
+</script>
